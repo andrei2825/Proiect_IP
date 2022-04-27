@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "316384541812",
+    "project_id": "bookpanda-daf35",
+    "storage_bucket": "bookpanda-daf35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316384541812:android:ab2a0c0d47174b9731a521",
+        "android_client_info": {
+          "package_name": "com.example.book_panda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316384541812-f2m2efa4r375es1paff9sfcupldktiru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2grc2bzFO6y8XCVmY1I_8cYyPpkjhccM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316384541812-f2m2efa4r375es1paff9sfcupldktiru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
