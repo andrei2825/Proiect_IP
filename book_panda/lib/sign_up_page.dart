@@ -1,9 +1,10 @@
 import './authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './sign_up_page.dart';
+import './sign_in_page.dart';
 
-class SignInPage extends StatelessWidget {
+
+class SignUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -34,24 +35,21 @@ class SignInPage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              context.read<AuthenticationService>().signIn(
+              context.read<AuthenticationService>().signUp(
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
                   );
             },
-            child: Text("Sign In"),
+            child: Text("Sign Up"),
           ),
           TextButton(
-            onPressed:() {
-             _navigateToNextScreen(context);
+            onPressed: () {
+              Navigator.pop(context);
             },
-            child: Text("Sign Up"),
+            child: Text("Sign In"),
           ),
         ],
       ),
     );
-  }
-  void _navigateToNextScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpPage()));
   }
 }
