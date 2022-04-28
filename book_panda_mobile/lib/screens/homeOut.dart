@@ -8,7 +8,6 @@ import '../controllers/authController.dart';
 class HomeOut extends GetWidget<AuthController> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +23,13 @@ class HomeOut extends GetWidget<AuthController> {
               ElevatedButton(
                 child: Text("Login"),
                 onPressed: () {
-                  Get.to(Login());
+                  Get.to(() => Login());
                 },
               ),
               ElevatedButton(
                 child: Text("Sign Up"),
                 onPressed: () {
-                  Get.to(SignUp());
+                  Get.to(() => SignUp());
                 },
               ),
             ],
