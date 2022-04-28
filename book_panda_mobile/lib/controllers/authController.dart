@@ -16,7 +16,9 @@ class AuthController extends GetxController {
   void createUser(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
       Get.back();
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
@@ -29,7 +31,11 @@ class AuthController extends GetxController {
 
   void login(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Get.back();
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
         "Error login",

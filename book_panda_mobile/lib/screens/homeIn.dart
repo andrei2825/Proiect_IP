@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/authController.dart';
 
-class Home extends GetWidget<AuthController> {
+class HomeIn extends GetWidget<AuthController> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
