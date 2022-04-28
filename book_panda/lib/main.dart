@@ -1,11 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import './authentication_service.dart';
-import './home_page.dart';
-import './sign_in_page.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+import 'utils/root.dart';
+import './screens/login.dart';
+import './controllers/bindings/authBinding.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,38 +20,10 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider<AuthenticationService>(
-          create: (_) => AuthenticationService(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-          create: (context) => context.read<AuthenticationService>().authStateChanges,
-          initialData: null,
-        )
-      ],
-      child: MaterialApp(
-        title: 'BookPanda',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: AuthenticationWrapper(),
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialBinding: AuthBinding(),
+      home: Root(),
     );
-  }
-}
-
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-    
-    if (firebaseUser != null) {
-      return HomePage();
-    }
-
-    
-    return SignInPage();
   }
 }

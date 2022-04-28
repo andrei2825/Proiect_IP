@@ -47,7 +47,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyA2grc2bzFO6y8XCVmY1I_8cYyPpkjhccM',
-    appId: '1:316384541812:android:ab2a0c0d47174b9731a521',
+    appId: '1:316384541812:android:842f1782fd13dbd031a521',
     messagingSenderId: '316384541812',
     projectId: 'bookpanda-daf35',
     storageBucket: 'bookpanda-daf35.appspot.com',
@@ -55,11 +55,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyClGeeQFSUQ4JIvXWwQUXpf-pjbWVxQdEg',
-    appId: '1:316384541812:ios:dcfe8e1f269b0aec31a521',
+    appId: '1:316384541812:ios:9f2f7ede31f9c99331a521',
     messagingSenderId: '316384541812',
     projectId: 'bookpanda-daf35',
     storageBucket: 'bookpanda-daf35.appspot.com',
-    iosClientId: '316384541812-06n2c58lfako2d2f5og9c0mggatoqj29.apps.googleusercontent.com',
-    iosBundleId: 'com.example.bookPanda',
+    iosClientId: '316384541812-m2g07hbgbmdc1g104qhop7c5q73ttf41.apps.googleusercontent.com',
+    iosBundleId: 'com.example.loginTest',
   );
 }
