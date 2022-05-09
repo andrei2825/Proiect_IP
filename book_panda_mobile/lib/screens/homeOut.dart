@@ -1,3 +1,4 @@
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:book_panda/screens/login.dart';
 import 'package:book_panda/screens/signup.dart';
 import 'package:flutter/material.dart';
@@ -23,13 +24,13 @@ class HomeOut extends GetWidget<AuthController> {
               ElevatedButton(
                 child: Text("Login"),
                 onPressed: () {
-                  Get.to(() => Login());
+                  Get.toNamed(Routes.LOGIN);
                 },
               ),
               ElevatedButton(
                 child: Text("Sign Up"),
                 onPressed: () {
-                  Get.to(() => SignUp());
+                  Get.toNamed(Routes.SIGNUP);
                 },
               ),
             ],

@@ -1,16 +1,31 @@
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/route_manager.dart';
 
 class AuthController extends GetxController {
+  static AuthController instance = Get.find();
+
   FirebaseAuth _auth = FirebaseAuth.instance;
-  Rxn<User?> _firebaseUser = Rxn<User?>();
+  late Rxn<User?> _firebaseUser;
 
   String? get user => _firebaseUser.value?.email;
 
   @override
   void onInit() {
-    _firebaseUser.bindStream(_auth.authStateChanges());
+    super.onInit();
+    _firebaseUser = Rxn<User?>(_auth.currentUser);
+    _firebaseUser.bindStream(_auth.userChanges());
+    ever(_firebaseUser, _initialScreen);
+  }
+
+  _initialScreen(User? user) {
+    if(user == null) {
+      Get.offAllNamed(Routes.HOMEOUT);
+    } else {
+      Get.offAllNamed(Routes.VIEWROOMS);
+    }
   }
 
   void createUser(String email, String password) async {

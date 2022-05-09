@@ -5,6 +5,8 @@ import '../controllers/authController.dart';
 import './login.dart';
 
 class SignUp extends GetWidget<AuthController> {
+
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
