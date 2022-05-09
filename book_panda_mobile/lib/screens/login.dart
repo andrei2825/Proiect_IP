@@ -1,3 +1,4 @@
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +41,7 @@ class Login extends GetWidget<AuthController> {
               ),
               TextButton(
                 onPressed: () {
-                  Get.to(SignUp());
+                  Get.toNamed(Routes.SIGNUP);
                 },
                 child: Text("Sign Up"),
               ),

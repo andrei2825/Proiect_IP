@@ -1,3 +1,4 @@
+import 'package:book_panda/routes/app_pages.dart';
 import 'package:book_panda/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: AuthBinding(),
-      initialRoute: Routes.SPLASH,
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
     );
   }
 }

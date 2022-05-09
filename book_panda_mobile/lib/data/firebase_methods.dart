@@ -12,12 +12,24 @@ class FirebaseMethods {
   }
 
   FirebaseMethods._protected();
-  
+
   Future<List<Room>?> getRooms() async {
-    var roomDocs = await _firestore
-        .collection('rooms')
-        .get();
+    var roomDocs = await _firestore.collection('rooms').get();
 
     return roomDocs.docs.map((e) => Room.fromMap(e.data())).toList();
+  }
+
+  Stream<List<Room>> roomStream() {
+    return _firestore
+        .collection('rooms')
+        .orderBy('title', descending: false)
+        .snapshots()
+        .map((QuerySnapshot querySnapshot) {
+      List<Room> retVal = [];
+      querySnapshot.docs.forEach((element) {
+        retVal.add(Room.fromMap(element.data() as Map<String, dynamic>));
+      });
+      return retVal;
+    });
   }
 }

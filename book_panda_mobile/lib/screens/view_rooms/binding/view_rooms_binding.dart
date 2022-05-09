@@ -6,6 +6,6 @@ class ViewRoomsBinding extends Bindings {
 
   @override
   void dependencies() {
-    Get.put<ViewRoomsController>(ViewRoomsController());
+    Get.put<ViewRoomsController>(ViewRoomsController(), permanent: true);
   }
 }

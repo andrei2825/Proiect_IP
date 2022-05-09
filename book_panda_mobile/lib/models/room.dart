@@ -6,13 +6,15 @@ class Room extends Equatable {
   final String? description;
   final int? price;
   final List<String>? photosIds;
+  final String? title;
 
   const Room(
-      {this.rid, this.capacity, this.description, this.price, this.photosIds});
+      {this.title, this.rid, this.capacity, this.description, this.price, this.photosIds});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{};
 
+    map['title'] = title;
     map['rid'] = rid;
     map['capacity'] = capacity;
     map['description'] = description;
@@ -24,6 +26,7 @@ class Room extends Equatable {
 
   static Room fromMap(Map<String, dynamic> data) {
     return Room(
+        title: data['title'],
         rid: data['rid'],
         capacity: data['capacity'],
         description: data['description'],
@@ -34,8 +37,8 @@ class Room extends Equatable {
   }
 
   @override
-  List<Object?> get props => [rid, description, capacity, price, photosIds];
+  List<Object?> get props => [title, rid, description, capacity, price, photosIds];
 
   static const empty =
-      Room(rid: '', capacity: 0, description: '', price: 0, photosIds: []);
+      Room(title: '', rid: '', capacity: 0, description: '', price: 0, photosIds: []);
 }
