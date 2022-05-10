@@ -38,7 +38,7 @@ class ViewRooms extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10),
               child: ListView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 0),
-                  itemExtent: 120,
+                  itemExtent: 140,
                   itemCount: viewRoomsController.rooms
                       .length, //TODO change to the length of the arrays with rooms
                   itemBuilder: (_, index) {
@@ -57,24 +57,37 @@ Widget _cardBuilder(Room item) {
       child: Row(
         children: [
           Expanded(
-            flex: 6,
+            flex: 7,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(
-                      'assets/logo_panda.png',
-                    ),
-                    fit: BoxFit.fill),
+                    image: NetworkImage(item.photosIds![0]), fit: BoxFit.fill),
               ),
             ),
           ),
-          const Spacer(
-            flex: 1,
-          ),
           Expanded(
             flex: 14,
-            child: Container(
-              color: Colors.red,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(item.title!),
+                      Text(item.description!),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('${item.capacity!} pers'),
+                          Text('${item.price!} Euro'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
         ],
