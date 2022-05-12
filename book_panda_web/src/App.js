@@ -5,6 +5,7 @@ import Layout from "./components/Layout/Layout";
 //import UserProfile from "./components/Profile/UserProfile";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
+import RoomsPage from "./pages/RoomsPage";
 import AuthContext from "./store/AuthContext";
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
         </Route>
         <Route path="/auth">
           {!isLoggedin && <AuthPage />}
-          {isLoggedin && <Redirect to="/" />}
+          {isLoggedin && <Redirect to="/rooms" />}
         </Route>
-        {/* <Route path="/profile">
-          {isLoggedin && <UserProfile />}
+        <Route path="/rooms">
+          {isLoggedin && <RoomsPage />}
           {!isLoggedin && <Redirect to="/auth" />}
-        </Route> */}
+        </Route>
         <Route path="*">
           <Redirect to="/" />
         </Route>

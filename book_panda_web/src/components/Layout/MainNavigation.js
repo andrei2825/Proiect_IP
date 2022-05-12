@@ -28,8 +28,13 @@ const MainNavigation = () => {
           )}
           {isLoggedin && (
             <lout>
-              <button onClick={logoutHandler}>Logout</button>
+              <Link to="/"><button onClick={logoutHandler}>Logout</button></Link>
             </lout>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/rooms">Rooms</Link>
+            </lin>
           )}
         </ul>
       </nav>
