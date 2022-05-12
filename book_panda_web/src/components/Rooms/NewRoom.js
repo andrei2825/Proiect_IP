@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ref } from './RoomList'
 import { v4 as uuidv4} from "uuid"
+import classes from './RoomList.module.css'
 
 const NewRoom = () => {
 
@@ -16,13 +17,16 @@ const NewRoom = () => {
     }
   
     return(
-      <h2>
-        <input type="text" id="rid1" placeholder="rid" onChange={(e) => setRid(e.target.value)}></input>
-        <input type="text" id="title1" placeholder="title" onChange={(e) => setTitle(e.target.value)}></input>
-        <input type="text" id="description1" placeholder="description" onChange={(e) => setDescription(e.target.value)}></input>
-        <input type="text" id="capacity1" placeholder="capacity" onChange={(e) => setCapacity(e.target.valueAsNumber)}></input>
-        <input type="text" id="price1" placeholder="price" onChange={(e) => setPrice(e.target.valueAsNumber)}></input>
-        <input type="text" id="photosIds1" placeholder="photosIds" onChange={(e) => setPhotosIds(e.target.value)}></input>
+    <div>
+      <div className={classes.add}>
+        <div className={classes.new}>
+            <div><input type="text" id="rid1" placeholder="Id" onChange={(e) => setRid(e.target.value)}></input></div>
+            <div><input type="text" id="title1" placeholder="Title" onChange={(e) => setTitle(e.target.value)}></input></div>
+            <div><input type="text" id="description1" placeholder="Description" onChange={(e) => setDescription(e.target.value)}></input></div>
+            <div><input type="number" id="capacity1" placeholder="Capacity" onChange={(e) => setCapacity(e.target.valueAsNumber)}></input></div>
+            <div><input type="number" id="price1" placeholder="Price" onChange={(e) => setPrice(e.target.valueAsNumber)}></input></div>
+            <div><input type="text" id="photosIds1" placeholder="Photo" onChange={(e) => setPhotosIds(e.target.value)}></input></div>
+        </div>
         <button onClick={() => {
             CreateRoom({rid,title,description,capacity,price,photosIds,id: uuidv4()})
           document.getElementById("rid1").value = ""
@@ -32,7 +36,8 @@ const NewRoom = () => {
           document.getElementById("price1").value = ""
           document.getElementById("photosIds1").value = ""
         }}>Add Room</button>
-      </h2>
+      </div>
+    </div>
     )
   }
 

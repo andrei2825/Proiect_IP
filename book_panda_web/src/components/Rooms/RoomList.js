@@ -1,4 +1,4 @@
-import classes from './RoomList.css';
+import classes from './RoomList.module.css';
 import firebase from '../../firebase'
 import { useState, useEffect } from 'react'
 import NewRoom from './NewRoom'
@@ -35,23 +35,23 @@ const RoomList = () => {
   }
 
   return (
-    <section className={classes.rooms}>
-      <h1>Room List</h1>
-      <NewRoom>
-      </NewRoom>
+    <header>
+      <h1 className={classes.title}>Room List</h1>
       {rooms.map((room) => (
         <div key={room.rid}>
-          <h2>
-            <h3>{room.title}</h3>
-            <h4>Description: {room.description}</h4>
-            <h4>Capacity: {room.capacity}</h4>
-            <h4>Price: {room.price}</h4>
-            <h4><img src={room.photosIds} alt="display"/></h4>
+          <section className={classes.auth}>
+            <div>Name: {room.title}</div>
+            <div>Description: {room.description}</div>
+            <div>Capacity: {room.capacity}</div>
+            <div>Price: {room.price}</div>
+            <div><img className={classes.photo} src={room.photosIds} alt="display"/></div>
             <button onClick={() => deleteRoom(room)}>Delete Room</button>
-          </h2>
+          </section>
         </div>
       ))}
-    </section>
+      <NewRoom>
+      </NewRoom>
+    </header>
 
   );
 };
