@@ -61,10 +61,13 @@ class _ViewRequest extends State<ViewRequest> {
                       'startDate': _startDate,
                       'endDate': _endDate,
                       'rid': roomId,
+                      'status': 'pending',
                     })
                     .then((value) => print('Request Sent'))
                     .catchError(
-                        (error) => print('Failed to send requst: $error'))
+                        (error) => print('Failed to send requst: $error')),
+                Get.back(),
+                Get.back()
               },
               child: Text('Confirm'),
             ),
