@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/authController.dart';
-import './login.dart';
 
 class SignUp extends GetWidget<AuthController> {
 
@@ -14,7 +13,7 @@ class SignUp extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        title: const Text("Sign Up"),
       ),
       body: Center(
         child: Padding(
@@ -23,19 +22,19 @@ class SignUp extends GetWidget<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(hintText: "Email"),
+                decoration: const InputDecoration(hintText: "Email"),
                 controller: emailController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               TextFormField(
-                decoration: InputDecoration(hintText: "Password"),
+                decoration: const InputDecoration(hintText: "Password"),
                 controller: passwordController,
                 obscureText: true,
               ),
               ElevatedButton(
-                child: Text("Sign Up"),
+                child: const Text("Sign Up"),
                 onPressed: () {
                   controller.createUser(emailController.text, passwordController.text);
                 },

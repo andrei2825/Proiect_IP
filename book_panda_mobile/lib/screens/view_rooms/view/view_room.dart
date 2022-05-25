@@ -1,3 +1,4 @@
+import 'package:book_panda/screens/view_rooms/view/view_request.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,7 +6,11 @@ import '../../../models/room.dart';
 
 class ViewRoom extends StatelessWidget {
   final Room item;
-  const ViewRoom({required this.item});
+  var dateRange = DateTimeRange(
+    start: DateTime.now(),
+    end: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2),
+  ).obs;
+  ViewRoom({required this.item});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,7 +40,7 @@ class ViewRoom extends StatelessWidget {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: NetworkImage(item.photosIds![0]),
+                          image: NetworkImage(item.photosIds!),
                         ),
                       ),
                     ),
@@ -43,21 +48,24 @@ class ViewRoom extends StatelessWidget {
                       title: Text(
                         item.title!,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       trailing: RichText(
                         text: TextSpan(
                           children: [
-                            WidgetSpan(
-                              child: const Icon(
-                                Icons.people, // add custom icons also
+                            const WidgetSpan(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 3.0),
+                                child: Icon(
+                                  Icons.people, // add custom icons also
+                                ),
                               ),
                             ),
                             TextSpan(
                               text: " " + item.capacity.toString(),
                               style:
-                                  TextStyle(fontSize: 18, color: Colors.black),
+                                  const TextStyle(fontSize: 18, color: Colors.black),
                             ),
                           ],
                         ),
@@ -67,11 +75,11 @@ class ViewRoom extends StatelessWidget {
                       subtitle: RichText(
                         text: TextSpan(
                           text: "Room description: \n" + item.description!,
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: const TextStyle(fontSize: 18, color: Colors.black),
                         ),
                       ),
                     ),
-                    SizedBox(height: 90),
+                    const SizedBox(height: 90),
                   ],
                 ),
               ),
@@ -81,14 +89,16 @@ class ViewRoom extends StatelessWidget {
                     children: [
                       WidgetSpan(
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(ViewRequest(rid: item.rid,));
+                          },
                           child: Container(
                             height: 50,
                             width: 200,
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(border: Border.all()),
-                            child: Text(
-                              "Check Availibility",
+                            child: const Text(
+                              "Reserve",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20,
@@ -104,9 +114,9 @@ class ViewRoom extends StatelessWidget {
                 trailing: RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan( 
-                        text: item.price.toString() + "€",
-                        style: TextStyle(fontSize: 30, color: Colors.black),
+                      TextSpan(
+                        text: item.price.toString() + "€/night",
+                        style: const TextStyle(fontSize: 30, color: Colors.black),
                       ),
                     ],
                   ),

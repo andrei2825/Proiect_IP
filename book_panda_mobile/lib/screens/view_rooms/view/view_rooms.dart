@@ -2,7 +2,6 @@ import 'package:book_panda/constants/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/authController.dart';
 import '../../../models/room.dart';
 import './view_room.dart';
 
@@ -12,7 +11,7 @@ class ViewRooms extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Home"),
+          title: const Text("Home"),
           leading: GestureDetector(
             onTap: () {
               // TODO: Burger menu
@@ -40,7 +39,7 @@ class ViewRooms extends StatelessWidget {
           () => Padding(
             padding: const EdgeInsets.only(top: 10),
             child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 0),
+                padding: const EdgeInsets.symmetric(horizontal: 0),
                 itemExtent: 140,
                 itemCount: viewRoomsController.rooms
                     .length, //TODO change to the length of the arrays with rooms
@@ -72,7 +71,7 @@ Widget _cardBuilder(Room item) {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(item.photosIds![0]),
+                      image: NetworkImage(item.photosIds!),
                       fit: BoxFit.fill),
                 ),
               ),

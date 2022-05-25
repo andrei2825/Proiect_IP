@@ -5,7 +5,7 @@ class Room extends Equatable {
   final int? capacity;
   final String? description;
   final int? price;
-  final List<String>? photosIds;
+  final String? photosIds;
   final String? title;
 
   const Room(
@@ -31,14 +31,12 @@ class Room extends Equatable {
         capacity: data['capacity'],
         description: data['description'],
         price: data['price'],
-        photosIds: data['photosIds'] != null
-          ? List<String>.from(data['photosIds'])
-          : []);
+        photosIds: data['photosIds']);
   }
 
   @override
   List<Object?> get props => [title, rid, description, capacity, price, photosIds];
 
   static const empty =
-      Room(title: '', rid: '', capacity: 0, description: '', price: 0, photosIds: []);
+      Room(title: '', rid: '', capacity: 0, description: '', price: 0, photosIds: '');
 }

@@ -1,6 +1,4 @@
 import 'package:book_panda/routes/app_routes.dart';
-import 'package:book_panda/screens/login.dart';
-import 'package:book_panda/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +11,7 @@ class HomeOut extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: const Text("Home"),
       ),
       body: Center(
         child: Padding(
@@ -22,13 +20,13 @@ class HomeOut extends GetWidget<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                child: Text("Login"),
+                child: const Text("Login"),
                 onPressed: () {
                   Get.toNamed(Routes.LOGIN);
                 },
               ),
               ElevatedButton(
-                child: Text("Sign Up"),
+                child: const Text("Sign Up"),
                 onPressed: () {
                   Get.toNamed(Routes.SIGNUP);
                 },

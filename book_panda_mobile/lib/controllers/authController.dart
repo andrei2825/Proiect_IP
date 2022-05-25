@@ -1,13 +1,11 @@
 import 'package:book_panda/routes/app_routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
-import 'package:get/route_manager.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   late Rxn<User?> _firebaseUser;
 
   String? get user => _firebaseUser.value?.email;

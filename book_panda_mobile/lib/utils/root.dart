@@ -1,10 +1,4 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 
-import '../controllers/authController.dart';
-import '../screens/view_rooms/view/view_rooms.dart';
-import '../screens/homeOut.dart';
-import '../screens/login.dart';
 
 // class Root extends GetWidget<AuthController> {
 //   @override

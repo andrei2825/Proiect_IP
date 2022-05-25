@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/authController.dart';
-import './signup.dart';
 
 class Login extends GetWidget<AuthController> {
   final TextEditingController emailController = TextEditingController();
@@ -13,7 +12,7 @@ class Login extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text("Login"),
       ),
       body: Center(
         child: Padding(
@@ -22,19 +21,19 @@ class Login extends GetWidget<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(hintText: "Email"),
+                decoration: const InputDecoration(hintText: "Email"),
                 controller: emailController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               TextFormField(
-                decoration: InputDecoration(hintText: "Password"),
+                decoration: const InputDecoration(hintText: "Password"),
                 controller: passwordController,
                 obscureText: true,
               ),
               ElevatedButton(
-                child: Text("Log In"),
+                child: const Text("Log In"),
                 onPressed: () {
                   controller.login(emailController.text, passwordController.text);
                 },
@@ -43,7 +42,7 @@ class Login extends GetWidget<AuthController> {
                 onPressed: () {
                   Get.toNamed(Routes.SIGNUP);
                 },
-                child: Text("Sign Up"),
+                child: const Text("Sign Up"),
               ),
             ],
           ),

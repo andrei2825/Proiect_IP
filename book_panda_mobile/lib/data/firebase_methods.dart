@@ -26,9 +26,9 @@ class FirebaseMethods {
         .snapshots()
         .map((QuerySnapshot querySnapshot) {
       List<Room> retVal = [];
-      querySnapshot.docs.forEach((element) {
+      for (var element in querySnapshot.docs) {
         retVal.add(Room.fromMap(element.data() as Map<String, dynamic>));
-      });
+      }
       return retVal;
     });
   }

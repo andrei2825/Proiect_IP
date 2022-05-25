@@ -1,4 +1,3 @@
-import 'package:book_panda/controllers/bindings/authBinding.dart';
 import 'package:book_panda/screens/homeOut.dart';
 import 'package:book_panda/screens/login.dart';
 import 'package:book_panda/screens/signup.dart';
@@ -7,7 +6,6 @@ import 'package:get/get.dart';
 
 import '../screens/splash/view/splash_screen.dart';
 import '../screens/view_rooms/binding/view_rooms_binding.dart';
-import '../utils/root.dart';
 import 'app_routes.dart';
 
 class AppPages {
