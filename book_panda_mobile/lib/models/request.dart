@@ -5,12 +5,14 @@ class Request extends Equatable {
   final DateTime? startDate; // request start date
   final DateTime? endDate; // request end date
   final String? uid; //user id
+  final String? status; //pending or accepted
 
   const Request({
     this.rid,
     this.startDate,
     this.endDate,
     this.uid,
+    this.status
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +22,7 @@ class Request extends Equatable {
     map['startDate'] = startDate;
     map['endDate'] = endDate;
     map['uid'] = uid;
+    map['status'] = status;
 
     return map;
   }
@@ -30,6 +33,7 @@ class Request extends Equatable {
       startDate: data['startDate'],
       endDate: data['endDate'],
       uid: data['uid'],
+      status: data['status'],
     );
   }
 
@@ -39,5 +43,6 @@ class Request extends Equatable {
         startDate,
         endDate,
         uid,
+        status
       ];
 }
