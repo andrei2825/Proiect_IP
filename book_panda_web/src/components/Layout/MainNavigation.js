@@ -15,24 +15,41 @@ const MainNavigation = () => {
   return (
     <header className={classes.header}>
       <Link to="/">
-        <div className={classes.logo}>React Auth</div>
+        <div className={classes.logo}>
+          <color>BookPanda</color>
+        </div>
       </Link>
       <nav>
         <ul>
           {!isLoggedin && (
-            <li>
+            <lin>
               <Link to="/auth">Login</Link>
-            </li>
+            </lin>
           )}
           {isLoggedin && (
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
+            <lout>
+              <Link to="/"><button onClick={logoutHandler}>Logout</button></Link>
+            </lout>
           )}
           {isLoggedin && (
-            <li>
-              <button onClick={logoutHandler}>Logout</button>
-            </li>
+            <lin>
+              <Link to="/rooms">Rooms</Link>
+            </lin>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/requests">Requests</Link>
+            </lin>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/bookings">Bookings</Link>
+            </lin>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/edit">Edit</Link>
+            </lin>
           )}
         </ul>
       </nav>
