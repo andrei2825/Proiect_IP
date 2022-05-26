@@ -28,7 +28,7 @@ const NewRoom = () => {
             <div><input type="text" id="photosIds1" placeholder="Photo" onChange={(e) => setPhotosIds(e.target.value)}></input></div>
         </div>
         <button onClick={() => {
-            CreateRoom({rid,title,description,capacity,price,photosIds,id: uuidv4()})
+          CreateRoom({rid,title,description,capacity,price,photosIds,id: uuidv4()})
           document.getElementById("rid1").value = ""
           document.getElementById("title1").value = ""
           document.getElementById("description1").value = ""

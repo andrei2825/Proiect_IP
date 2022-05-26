@@ -6,7 +6,10 @@ import Layout from "./components/Layout/Layout";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import RoomsPage from "./pages/RoomsPage";
+import RequestsPage from "./pages/RequestsPage";
 import AuthContext from "./store/AuthContext";
+import BookingsPage from "./pages/BookingsPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
   const isLoggedin = useContext(AuthContext).isLoggedin;
@@ -23,6 +26,18 @@ function App() {
         </Route>
         <Route path="/rooms">
           {isLoggedin && <RoomsPage />}
+          {!isLoggedin && <Redirect to="/auth" />}
+        </Route>
+        <Route path="/requests">
+          {isLoggedin && <RequestsPage />}
+          {!isLoggedin && <Redirect to="/auth" />}
+        </Route>
+        <Route path="/bookings">
+          {isLoggedin && <BookingsPage />}
+          {!isLoggedin && <Redirect to="/auth" />}
+        </Route>
+        <Route path="/edit">
+          {isLoggedin && <EditPage />}
           {!isLoggedin && <Redirect to="/auth" />}
         </Route>
         <Route path="*">

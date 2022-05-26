@@ -36,6 +36,21 @@ const MainNavigation = () => {
               <Link to="/rooms">Rooms</Link>
             </lin>
           )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/requests">Requests</Link>
+            </lin>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/bookings">Bookings</Link>
+            </lin>
+          )}
+          {isLoggedin && (
+            <lin>
+              <Link to="/edit">Edit</Link>
+            </lin>
+          )}
         </ul>
       </nav>
     </header>
