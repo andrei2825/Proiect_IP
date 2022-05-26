@@ -1,3 +1,4 @@
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:book_panda/screens/view_rooms/view/view_request.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,12 +6,13 @@ import 'package:get/get.dart';
 import '../../../models/room.dart';
 
 class ViewRoom extends StatelessWidget {
-  final Room item;
+  final Room item = Get.arguments;
   var dateRange = DateTimeRange(
     start: DateTime.now(),
     end: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2),
   ).obs;
-  ViewRoom({required this.item});
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,7 +92,7 @@ class ViewRoom extends StatelessWidget {
                       WidgetSpan(
                         child: TextButton(
                           onPressed: () {
-                            Get.to(ViewRequest(rid: item.rid,));
+                            Get.toNamed(Routes.VIEWREQUEST, arguments: item.rid,);
                           },
                           child: Container(
                             height: 50,

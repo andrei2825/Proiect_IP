@@ -1,3 +1,4 @@
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:get/get.dart';
@@ -5,12 +6,12 @@ import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-String? roomId = '';
+
 
 class ViewRequest extends StatefulWidget {
-  ViewRequest({required String? rid}) {
-    roomId = rid;
-  }
+  final String? roomId = Get.arguments;
+
+
   @override
   State<ViewRequest> createState() => _ViewRequest();
 }
@@ -60,14 +61,13 @@ class _ViewRequest extends State<ViewRequest> {
                       'uid': FirebaseAuth.instance.currentUser?.uid,
                       'startDate': _startDate,
                       'endDate': _endDate,
-                      'rid': roomId,
+                      'rid': widget.roomId,
                       'status': 'pending',
                     })
                     .then((value) => print('Request Sent'))
                     .catchError(
                         (error) => print('Failed to send requst: $error')),
-                Get.back(),
-                Get.back()
+                Get.offAllNamed(Routes.VIEWROOMS)
               },
               child: Text('Confirm'),
             ),

@@ -1,4 +1,5 @@
 import 'package:book_panda/constants/controllers.dart';
+import 'package:book_panda/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -56,7 +57,7 @@ class ViewRooms extends StatelessWidget {
 Widget _cardBuilder(Room item) {
   return ElevatedButton(
     onPressed: () => {
-      Get.to(ViewRoom(item: item)) 
+      Get.toNamed(Routes.VIEWROOM, arguments: item)
     },
     style: ElevatedButton.styleFrom(
       primary: Colors.white,
