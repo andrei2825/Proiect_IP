@@ -52,6 +52,7 @@ class _ViewRequest extends State<ViewRequest> {
             SfDateRangePicker(
               onSelectionChanged: _onSelectionChanged,
               selectionMode: DateRangePickerSelectionMode.range,
+              minDate: DateTime.now(),
             ),
             ElevatedButton(
               onPressed: () => {
