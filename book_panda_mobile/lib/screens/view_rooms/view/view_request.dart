@@ -67,7 +67,9 @@ class _ViewRequest extends State<ViewRequest> {
                     .then((value) => print('Request Sent'))
                     .catchError(
                         (error) => print('Failed to send requst: $error')),
-                Get.offAllNamed(Routes.VIEWROOMS)
+                Get.offAllNamed(Routes.VIEWROOMS),
+                Get.defaultDialog(title: 'Request was sent to the administrator',
+                middleText: 'The period is $_startDate - $_endDate'),
               },
               child: Text('Confirm'),
             ),
