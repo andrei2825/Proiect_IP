@@ -9,7 +9,8 @@ import RoomsPage from "./pages/RoomsPage";
 import RequestsPage from "./pages/RequestsPage";
 import AuthContext from "./store/AuthContext";
 import BookingsPage from "./pages/BookingsPage";
-import EditPage from "./pages/EditPage";
+import PhotosPage from "./pages/PhotosPage";
+import AddPage from "./pages/AddPage";
 
 function App() {
   const isLoggedin = useContext(AuthContext).isLoggedin;
@@ -36,8 +37,12 @@ function App() {
           {isLoggedin && <BookingsPage />}
           {!isLoggedin && <Redirect to="/auth" />}
         </Route>
-        <Route path="/edit">
-          {isLoggedin && <EditPage />}
+        <Route path="/photos">
+          {isLoggedin && <PhotosPage />}
+          {!isLoggedin && <Redirect to="/auth" />}
+        </Route>
+        <Route path="/add">
+          {isLoggedin && <AddPage />}
           {!isLoggedin && <Redirect to="/auth" />}
         </Route>
         <Route path="*">

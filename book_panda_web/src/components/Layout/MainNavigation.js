@@ -27,11 +27,6 @@ const MainNavigation = () => {
             </lin>
           )}
           {isLoggedin && (
-            <lout>
-              <Link to="/"><button onClick={logoutHandler}>Logout</button></Link>
-            </lout>
-          )}
-          {isLoggedin && (
             <lin>
               <Link to="/rooms">Rooms</Link>
             </lin>
@@ -48,8 +43,13 @@ const MainNavigation = () => {
           )}
           {isLoggedin && (
             <lin>
-              <Link to="/edit">Edit</Link>
+              <Link to="/photos">Photos</Link>
             </lin>
+          )}
+          {isLoggedin && (
+            <lout>
+              <Link to="/"><button onClick={logoutHandler}>Logout</button></Link>
+            </lout>
           )}
         </ul>
       </nav>

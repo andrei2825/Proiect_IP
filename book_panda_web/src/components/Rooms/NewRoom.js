@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ref } from './RoomList'
 import { v4 as uuidv4} from "uuid"
 import classes from './RoomList.module.css'
+import { Link } from "react-router-dom";
 
 const NewRoom = () => {
 
@@ -13,7 +14,9 @@ const NewRoom = () => {
     const [photosIds, setPhotosIds] = useState();
 
     function CreateRoom(data){
-        ref.doc(data.rid).set(data);
+        ref.doc(data.rid).set(data).then(() => {
+          alert("room added");
+      });
     }
   
     return(
@@ -27,7 +30,7 @@ const NewRoom = () => {
             <div><input type="number" id="price1" placeholder="Price" onChange={(e) => setPrice(e.target.valueAsNumber)}></input></div>
             <div><input type="text" id="photosIds1" placeholder="Photo" onChange={(e) => setPhotosIds(e.target.value)}></input></div>
         </div>
-        <button onClick={() => {
+        <Link to="/rooms"><button onClick={() => {
           CreateRoom({rid,title,description,capacity,price,photosIds,id: uuidv4()})
           document.getElementById("rid1").value = ""
           document.getElementById("title1").value = ""
@@ -35,7 +38,7 @@ const NewRoom = () => {
           document.getElementById("capacity1").value = ""
           document.getElementById("price1").value = ""
           document.getElementById("photosIds1").value = ""
-        }}>Add Room</button>
+        }}>Add Room</button></Link>
       </div>
     </div>
     )

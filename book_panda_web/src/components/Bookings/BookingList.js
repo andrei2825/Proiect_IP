@@ -7,37 +7,33 @@ const ref = firebase.firestore().collection("bookings");
 const BookingList = () => {
 
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   function getBookings() {
-    setLoading(true);
     ref.onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
       setBookings(items);
-      setLoading(false);
     })
   }
 
   function deleteBooking(booking){
-    ref.doc(booking.uid).delete();
+    ref.doc(booking.requestId).delete().then(() => {
+      alert("booking deleted");
+      window.location.reload();
+  });
   }
 
   useEffect(() => {
     getBookings();
   }, []);
 
-  if (loading){
-    return <h1>Loading</h1>;
-  }
-
   return (
     <header>
       <h1 className={classes.title}>Booking List</h1>
       {bookings.map((booking) => (
-        <div key={booking.uid}>
+        <div key={booking.requestId}>
           <section className={classes.auth}>
             <div>Camera Id: {booking.rid}</div>
             <div>Start Date: {booking.startDate}</div>
