@@ -6,6 +6,7 @@ class ViewRoomsBinding extends Bindings {
 
   @override
   void dependencies() {
+    //Get.lazyPut<ViewRoomsController>(() => ViewRoomsController(),fenix: true);
     Get.put<ViewRoomsController>(ViewRoomsController(), permanent: true);
   }
 }

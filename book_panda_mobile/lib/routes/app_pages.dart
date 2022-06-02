@@ -1,6 +1,9 @@
 import 'package:book_panda/screens/homeOut.dart';
 import 'package:book_panda/screens/login.dart';
 import 'package:book_panda/screens/signup.dart';
+import 'package:book_panda/screens/view_requests/binding/request_binding.dart';
+import 'package:book_panda/screens/view_requests/view/view_accepted_requests.dart';
+import 'package:book_panda/screens/view_requests/view/view_pending_requests.dart';
 import 'package:book_panda/screens/view_rooms/view/view_request.dart';
 import 'package:book_panda/screens/view_rooms/view/view_room.dart';
 import 'package:book_panda/screens/view_rooms/view/view_rooms.dart';
@@ -14,6 +17,16 @@ class AppPages {
   static const INITIAL = Routes.SPLASH;
 
   static final routes = [
+    GetPage(
+      name: Routes.VIEWACCEPTEDREQUESTS,
+      page: () => ViewAcceptedRequests(),
+      binding: RequestBinding(),
+    ),
+    GetPage(
+      name: Routes.VIEWPENDINGREQUESTS,
+      page: () => ViewPendingRequests(),
+      binding: RequestBinding(),
+    ),
     GetPage(
       name: Routes.VIEWROOMS,
       page: () => ViewRooms(),
