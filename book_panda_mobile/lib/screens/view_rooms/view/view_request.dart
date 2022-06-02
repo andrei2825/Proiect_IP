@@ -1,3 +1,4 @@
+import 'package:book_panda/data/firebase_methods.dart';
 import 'package:book_panda/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -9,7 +10,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class ViewRequest extends StatefulWidget {
-  final String? roomId = Get.arguments;
+  final String? roomId = Get.arguments[0]['roomId'];
+  final String roomTitle = Get.arguments[1]['roomTitle'];
 
 
   @override
@@ -55,22 +57,24 @@ class _ViewRequest extends State<ViewRequest> {
               minDate: DateTime.now(),
             ),
             ElevatedButton(
-              onPressed: () => {
+              onPressed: () async {
+                String? requestId = await FirebaseMethods().createNewRequestId();
                 FirebaseFirestore.instance
                     .collection('requests')
-                    .add({
-                      'uid': FirebaseAuth.instance.currentUser?.uid,
-                      'startDate': _startDate,
-                      'endDate': _endDate,
-                      'rid': widget.roomId,
-                      'status': 'pending',
-                    })
-                    .then((value) => print('Request Sent'))
-                    .catchError(
-                        (error) => print('Failed to send requst: $error')),
-                Get.offAllNamed(Routes.VIEWROOMS),
+                    .doc(requestId)
+                    .set({
+                  'uid': FirebaseAuth.instance.currentUser?.uid,
+                  'startDate': _startDate,
+                  'endDate': _endDate,
+                  'rid': widget.roomId,
+                  'status': 'pending',
+                  'requestId': requestId,
+                  'roomTitle': widget.roomTitle
+                });
+
+                Get.offAllNamed(Routes.VIEWROOMS);
                 Get.defaultDialog(title: 'Request was sent to the administrator',
-                middleText: 'The period is $_startDate - $_endDate'),
+                middleText: 'The period is $_startDate - $_endDate');
               },
               child: Text('Confirm'),
             ),
